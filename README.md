@@ -142,7 +142,44 @@ By running Nextflow using the `with-docker` flag we can specify a Docker contain
 
 ### d) Channels
 
-Load files in a channel instead of using `file()`
+Channels are the preferred method of transferring data in Nextflow & can connect two processes or operators.
+
+<!--
+There are two types of channels:
+1. [Queue channels](https://www.nextflow.io/docs/latest/channel.html#queue-channel) can be used to connect two processes or operators. They are usually produced from factory methods such as [`from`](https://www.nextflow.io/docs/latest/channel.html#from)/[`fromPath`](https://www.nextflow.io/docs/latest/channel.html#frompath) or by chaining it with methods such as [`map`](https://www.nextflow.io/docs/latest/operator.html#operator-map). **Queue channels are consumed upon being read.**
+2. [Value channels](https://www.nextflow.io/docs/latest/channel.html#value-channel) a.k.a. singleton channel are bound to a single value and can be read unlimited times without consuming there content. Value channels are produced by the value factory method or by operators returning a single value, such us first, last, collect, count, min, max, reduce, sum.
+-->
+
+Here we will use the method [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) to create a channel to load paired end FASTQ data, rather than just a single FASTQ file.
+
+To do this we will replace the code from [1c](https://github.com/PhilPalmer/lbf-hack-tutorial/blob/master/README.md#c-processes-inputs-outputs--scripts) with the following 
+
+```nextflow
+//main.nf
+reads = Channel.fromFilePairs(params.reads, size: 2)
+
+process fastqc {
+
+    publishDir "results"
+
+    input:
+    val(name), file(reads) from reads
+
+    output:
+    file "*_fastqc.{zip,html}" into fastqc_results
+
+    script:
+    """
+    fastqc $reads
+    """
+}
+
+```
+
+The `reads` variable is now equal to a channel which contains the reads prefix & paired end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. The rest remains unchanged.
+
+#### Recap
+Here we learnt how to the [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method to generate a channel for our input data.
 
 ### e) Operators
 
