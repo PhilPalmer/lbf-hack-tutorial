@@ -1,7 +1,7 @@
 # London Bioinformatics Frontiers Hackathon Tutorial
 Tutorial for The [London Bioinformatics Frontiers](http://bioinformatics-frontiers.com) Hackathon 2019.
 
-**\<Insert LBF banner here\>**
+![lbf_banner](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/lbf_banner.png)
 
 Intro to:
 - [Nextflow](https://www.nextflow.io/) **\<Insert descriptions here\>**
@@ -21,6 +21,8 @@ The following are required for the hackathon:
 <br />
 
 ## Session 1: Nextflow
+
+![nextflow_logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/nextflow.png)
 
 [See about Nextflow slides]()
 
@@ -79,6 +81,8 @@ Add parameters, docker & memory etc to `nextflow.config`
 
 ## Session 2: Docker
 
+![docker logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/docker.gif)
+
 Why use Docker? **\<Insert reproducibility meme here\>**
 [See about Docker slides]()
 
@@ -103,6 +107,8 @@ What is DockerHub? How to create an account on DockerHub, log in on the CLI & pu
 <br />
 
 ## Session 3: FlowCraft
+
+![flowcraft logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/flowcraft.png)
 
 What is FlowCraft? Why use it? 
 [See FlowCraft slides](https://slides.com/diogosilva-1/nextflow-workshop-2018-6#/)
