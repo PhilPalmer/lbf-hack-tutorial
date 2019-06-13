@@ -193,8 +193,9 @@ Operators are methods that allow you to manipulate & connect channels.
 
 Here we will add a new process `multiqc` & use the [`.collect()`](https://www.nextflow.io/docs/latest/operator.html#collect) operator
 
-Replace the fastqc process with the following:
+Add the following process after `fastqc`:
 ```nextflow
+//main.nf
 process multiqc {
 
     publishDir "results", mode: 'copy'
@@ -214,7 +215,7 @@ process multiqc {
 }
 ```
 
-Here we have added another process `multiqc`. We have used the `collect` operator here so that if `fastqc` ran for more than two pairs of files `multiqc` would collect & run once for all the files.
+Here we have added another process `multiqc`. We have used the `collect` operator here so that if `fastqc` ran for more than two pairs of files `multiqc` would collect all of the files & run only once.
 
 The pipeline can be run with the follwing:
 ```bash
@@ -222,7 +223,7 @@ nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-dock
 ```
 
 #### Recap
-Here we learnt how to use operators such as `collect`
+Here we learnt how to use operators such as `collect` & connect processes via channels
 
 ### f) Configuration
 
