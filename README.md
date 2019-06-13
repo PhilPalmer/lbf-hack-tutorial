@@ -133,6 +133,8 @@ flowcraft.py build -t "fastqc bwa mark_duplicates haplotypecaller" -o gatk.nf --
 
 ## Session 4: Running Nextflow Pipelines on The Cloud on Deploit
 
+![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
+
 About [Deploit](https://lifebit.ai/deploit)
 
 ### a) Creating an account
