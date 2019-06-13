@@ -35,6 +35,7 @@ During the first session you will build a [FastQC](https://www.bioinformatics.ba
 
 
 ### a) Installation
+### i. Installing Nextflow
 You will need to have Java 8 or later installed for Nextflow to work. You can check your version of Java by entering the following command:
 ```bash
 java -version
@@ -55,7 +56,16 @@ You can then test your installation of Nextflow with:
 nextflow run hello
 ```
 
-**\<insert Docker installation here\>**
+### ii. Installing Docker
+
+To check if you have docker installed you can type:
+```bash
+docker -v
+```
+
+If you need to install docker you can do so [here](https://docs.docker.com/v17.12/install/). Be sure to select your correct OS:
+![install_docker](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/install_docker.png)
+
   
 ### b) Parameters
 
