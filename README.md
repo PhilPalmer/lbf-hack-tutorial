@@ -85,7 +85,7 @@ The second line prints the value of this variable on execution of the pipeline.
 
 We can now run this script & set the value of `params.reads` to our testdata with the following command:
 ```
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq"
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
 ```
 
 This should return the value you passed on the command line
