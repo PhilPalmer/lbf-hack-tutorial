@@ -93,7 +93,7 @@ This should return the value you passed on the command line
 #### Recap
 Here we learnt how to define parameters & pass command line arguments to them in Nextflow
 
-### b) Processes (inputs, outputs & scripts)
+### c) Processes (inputs, outputs & scripts)
 
 Nextflow allows the execution of any command or user script by using a `process` definition. 
 
@@ -140,11 +140,11 @@ nextflow run main.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker flo
 By running Nextflow using the `with-docker` flag we can specify a Docker container to execute this command in. This is beneficial because it means we do not need to have `fastqc` installed locally on our laptop. We just need to specify a Docker container that has `fastqc` installed.
 
 
-### c) Channels
+### d) Channels
 
 Load files in a channel instead of using `file()`
 
-### d) Operators
+### e) Operators
 
 Add multiqc process to connect processes & use `.collect()` & then show that the pipeline runs for multiple fastq files
 
