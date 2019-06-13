@@ -24,14 +24,14 @@ The following are required for the hackathon:
 
 ![nextflow_logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/nextflow.png)
 
-[See about Nextflow slides]()
+What is Nextflow? Why use it? [See about Nextflow slides]()
 
 During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) & [MultiQC](https://multiqc.info/)   pipeline to learn the basics of Nextflow including:
-- Parameters **\<Add links to nf docs here\>**
-- Processes (inputs, outputs & scripts)
-- Channels
-- Operators
-- Configuration
+- [Parameters](https://www.nextflow.io/docs/latest/getstarted.html?highlight=parameters#pipeline-parameters)
+- [Processes](https://www.nextflow.io/docs/latest/process.html) (inputs, outputs & scripts)
+- [Channels](https://www.nextflow.io/docs/latest/channel.html)
+- [Operators](https://www.nextflow.io/docs/latest/operator.html)
+- [Configuration](https://www.nextflow.io/docs/latest/config.html)
 
 
 ### a) Installation
