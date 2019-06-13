@@ -119,7 +119,7 @@ process fastqc {
 
     script:
     """
-    fastqc -q $reads
+    fastqc $reads
     """
 }
 ```
