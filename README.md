@@ -109,7 +109,7 @@ reads = file(params.reads)
 
 process fastqc {
 
-    publishDir "results"
+    publishDir "results", mode: 'copy'
 
     input:
     file(reads) from reads
@@ -127,7 +127,7 @@ process fastqc {
 Here we created the variable `reads` which is a `file` from the command line input.
 
 We can then create the process `fastqc` including:
- - the [directive](https://www.nextflow.io/docs/latest/process.html#directives) `publishDir` to specify which folder to save the output files to 
+ - the [directive](https://www.nextflow.io/docs/latest/process.html#directives) `publishDir` to specify which folder to copy the output files to 
  - the [inputs](https://www.nextflow.io/docs/latest/process.html#inputs) where we declare a `file` `reads` from our variable `reads`
  - the [output](https://www.nextflow.io/docs/latest/process.html#outputs) which is anything ending in `_fastqc.zip` or `_fastqc.html` which will go into a `fastqc_results` channel
  - the [script](https://www.nextflow.io/docs/latest/process.html#script) where we are running the `fastqc` command on our `reads` variable
@@ -160,7 +160,9 @@ reads = Channel.fromFilePairs(params.reads, size: 2)
 
 process fastqc {
 
-    publishDir "results"
+    tag "$name"
+    publishDir "results", mode: 'copy'
+    container 'flowcraft/fastqc:0.11.7-1'
 
     input:
     set val(name), file(reads) from reads
@@ -175,7 +177,7 @@ process fastqc {
 }
 ```
 
-The `reads` variable is now equal to a channel which contains the reads prefix & paired end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. As we are now declaring two inputs the `set` keyword also has to be used. The rest remains unchanged.
+The `reads` variable is now equal to a channel which contains the reads prefix & paired end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. This `name` can be used as a tag for when the pipeline is run. Also as we are now declaring two inputs the `set` keyword also has to be used. Finally we can also specify the container name within the processes as a directive.
 
 To run the pipeline:
 ```bash
@@ -187,7 +189,55 @@ Here we learnt how to the [`fromFilePairs`](https://www.nextflow.io/docs/latest/
 
 ### e) Operators
 
-Add multiqc process to connect processes & use `.collect()` & then show that the pipeline runs for multiple fastq files
+Operators are methods that allow you to manipulate & connect channels.
+
+Here we will add a new process `multiqc` & use the [`.collect()`](https://www.nextflow.io/docs/latest/operator.html#collect) operator
+
+Replace the fastqc process with the following:
+```nextflow
+process fastqc {
+
+    tag "$name"
+    publishDir "results", mode: 'copy'
+    container 'flowcraft/fastqc:0.11.7-1'
+
+    input:
+    set val(name), file(reads) from reads
+
+    output:
+    file "*_fastqc.{zip,html}" into fastqc_results
+
+    script:
+    """
+    fastqc $reads
+    """
+}
+
+process multiqc {
+
+    publishDir "results", mode: 'copy'
+    container 'ewels/multiqc:v1.7'
+
+    input:
+    file (fastqc:'fastqc/*') from fastqc_results.collect()
+
+    output:
+    file "*multiqc_report.html" into multiqc_report
+    file "*_data"
+
+    script:
+    """
+    multiqc . -m fastqc
+    """
+}
+```
+
+Here we have added another process `multiqc`. We have used the `collect` operator here so that if `fastqc` ran for more than two pairs of files `multiqc` would collect & run once for all the files.
+
+The pipeline can be run with the follwing:
+```bash
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker flowcraft/fastqc:0.11.7-1
+```
 
 ### e) Configuration
 
