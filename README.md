@@ -163,7 +163,7 @@ process fastqc {
     publishDir "results"
 
     input:
-    val(name), file(reads) from reads
+    set val(name), file(reads) from reads
 
     output:
     file "*_fastqc.{zip,html}" into fastqc_results
@@ -173,10 +173,14 @@ process fastqc {
     fastqc $reads
     """
 }
-
 ```
 
-The `reads` variable is now equal to a channel which contains the reads prefix & paired end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. The rest remains unchanged.
+The `reads` variable is now equal to a channel which contains the reads prefix & paired end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. As we are now declaring two inputs the `set` keyword also has to be used. The rest remains unchanged.
+
+To run the pipeline:
+```bash
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker flowcraft/fastqc:0.11.7-1
+```
 
 #### Recap
 Here we learnt how to the [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method to generate a channel for our input data.
