@@ -347,7 +347,8 @@ With the `Dockerfile` from above you might want to run:
 ```bash
 docker build -t lifebitai/lbf-hack .
 ```
-**\<Insert waiting forever for conda solving environment meme here\>**
+
+![conda](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/conda.png)
 
 And then:
 ```bash
