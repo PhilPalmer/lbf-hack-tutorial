@@ -195,24 +195,6 @@ Here we will add a new process `multiqc` & use the [`.collect()`](https://www.ne
 
 Replace the fastqc process with the following:
 ```nextflow
-process fastqc {
-
-    tag "$name"
-    publishDir "results", mode: 'copy'
-    container 'flowcraft/fastqc:0.11.7-1'
-
-    input:
-    set val(name), file(reads) from reads
-
-    output:
-    file "*_fastqc.{zip,html}" into fastqc_results
-
-    script:
-    """
-    fastqc $reads
-    """
-}
-
 process multiqc {
 
     publishDir "results", mode: 'copy'
@@ -239,7 +221,10 @@ The pipeline can be run with the follwing:
 nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker flowcraft/fastqc:0.11.7-1
 ```
 
-### e) Configuration
+#### Recap
+Here we learnt how to use operators such as `collect`
+
+### f) Configuration
 
 Add parameters, docker & memory etc to `nextflow.config`
 
