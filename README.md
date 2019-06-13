@@ -64,7 +64,7 @@ docker -v
 ```
 
 If you need to install docker you can do so [here](https://docs.docker.com/v17.12/install/). Be sure to select your correct OS:
-![install_docker](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/install_docker.png)
+[![install_docker](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/install_docker.png)](https://docs.docker.com/v17.12/install/)
 
   
 ### b) Parameters
