@@ -83,9 +83,9 @@ println "My reads: ${params.reads}"
 The first line initialises a new variable (`params.reads`) & sets it to `false`
 The second line prints the value of this variable on execution of the pipeline.
 
-We can now run this script & set the value of `params.reads` to our testdata with the following command:
+We can now run this script & set the value of `params.reads` to one of our FASTQ files in the testdata folder with the following command:
 ```
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
+nextflow run main.nf --reads testdata/test.20k_reads_1.fastq.gz
 ```
 
 This should return the value you passed on the command line
@@ -95,7 +95,50 @@ Here we learnt how to define parameters & pass command line arguments to them in
 
 ### b) Processes (inputs, outputs & scripts)
 
-Create a fastqc process run `-with-docker`
+Nextflow allows the execution of any command or user script by using a `process` definition. 
+
+A process is defined by providing three main declarations: 
+the process [inputs](https://www.nextflow.io/docs/latest/process.html#inputs), 
+the process [outputs](https://www.nextflow.io/docs/latest/process.html#outputs)
+and finally the command [script](https://www.nextflow.io/docs/latest/process.html#script).
+
+In our main script we want to add the following:
+```nextflow
+//mainf.nf
+reads = file(params.reads)
+
+process fastqc {
+
+    publishDir "results"
+
+    input:
+    file(reads) from reads
+
+    output:
+    file "*_fastqc.{zip,html}" into fastqc_results
+
+    script:
+    """
+    fastqc -q $reads
+    """
+}
+```
+
+Here we created the variable `reads` which is a `file` from the command line input.
+
+We can then create the process `fastqc` including:
+ - the [directive](https://www.nextflow.io/docs/latest/process.html#directives) `publishDir` to specify which folder to save the output files to 
+ - the [inputs](https://www.nextflow.io/docs/latest/process.html#inputs) where we declare a `file` `reads` from our variable `reads`
+ - the [output](https://www.nextflow.io/docs/latest/process.html#outputs) which is anything ending in `_fastqc.zip` or `_fastqc.html` which will go into a `fastqc_results` channel
+ - the [script](https://www.nextflow.io/docs/latest/process.html#script) where we are running the `fastqc` command on our `reads` variable
+ 
+We can then run our script with the following command:
+```bash
+nextflow run main.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker flowcraft/fastqc:0.11.7-1
+```
+
+By running Nextflow using the `with-docker` flag we can specify a Docker container to execute this command in. This is beneficial because it means we do not need to have `fastqc` installed locally on our laptop. We just need to specify a Docker container that has `fastqc` installed.
+
 
 ### c) Channels
 
