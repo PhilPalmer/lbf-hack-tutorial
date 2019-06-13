@@ -227,7 +227,30 @@ Here we learnt how to use operators such as `collect` & connect processes via ch
 
 ### f) Configuration
 
-Add parameters, docker & memory etc to `nextflow.config`
+Configuration such as parameters, containers & resources eg memory can be set in `config` files such as [`nextflow.config`](https://www.nextflow.io/docs/latest/config.html#configuration-file).
+
+For example our `nextflow.config` file might look like this:
+```
+docker.enabled = true
+params.reads = false
+
+process {
+  cpus = 2
+  memory = "2.GB"
+
+  withName: fastqc {
+    container = "flowcraft/fastqc:0.11.7-1"
+  }
+  withName: multiqc {
+    container = "ewels/multiqc:v1.7"
+  }
+}
+```
+
+Here we have enabled docker by default, initialised parameters, set resources & containers. It is best practice to keep these in the `config` file so that they can more easily be set or removed. Containers & `params.reads` can then be removed from `main.nf`.
+
+#### Recap
+Here we learnt how to use configuration files to set parameters, resources & containers
 
 <br />
 
