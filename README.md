@@ -63,13 +63,35 @@ To check if you have docker installed you can type:
 docker -v
 ```
 
-If you need to install docker you can do so [here](https://docs.docker.com/v17.12/install/). Be sure to select your correct OS:
+If you need to install docker you can do so by following the instructions [here](https://docs.docker.com/v17.12/install/). Be sure to select your correct OS:
 [![install_docker](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/install_docker.png)](https://docs.docker.com/v17.12/install/)
 
   
 ### b) Parameters
 
-Write a script & get it to print the parameters. Learn how to pass parameters
+Now that we have Nextflow & Docker installed we're ready to run our first script
+
+1. Create a file `main.nf` & open this in your favourite code/text editor eg VSCode or vim
+2. In this file write the following:
+```nextflow
+// main.nf
+params.reads = false
+
+println "My reads: ${params.reads}"
+```
+
+The first line initialises a new variable (`params.reads`) & sets it to `false`
+The second line prints the value of this variable on execution of the pipeline.
+
+We can now run this script & set the value of `params.reads` to our testdata with the following command:
+```
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq"
+```
+
+This should return the value you passed on the command line
+
+#### Recap
+Here we learnt how to define parameters & pass command line arguments to them in Nextflow
 
 ### b) Processes (inputs, outputs & scripts)
 
