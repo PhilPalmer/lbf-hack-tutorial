@@ -2,14 +2,14 @@ params.reads = false
 
 println "My reads: ${params.reads}"
 
-reads = Channel.fromFilePairs(params.reads, size: 2)
+reads = file(params.reads)
 
 process fastqc {
 
-    publishDir "results"
+    publishDir "results", mode: 'copy'
 
     input:
-    set val(name), file(reads) from reads
+    file(reads) from reads
 
     output:
     file "*_fastqc.{zip,html}" into fastqc_results
