@@ -258,13 +258,37 @@ Here we learnt how to use configuration files to set parameters, resources & con
 
 ![docker logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/docker.gif)
 
-Why use Docker? **\<Insert reproducibility meme here\>**
+What is Docker? Why use it? **\<Insert reproducibility meme here\>**
 [See about Docker slides]()
 
 
 ### a) Running images
 
-Docker run command
+Running a container is easy as using the following command: 
+
+```bash
+docker run <container-name> 
+```
+
+For example: 
+
+```bash
+docker run hello-world  
+```
+
+#### Run a container in interactive mode 
+
+Launching a BASH shell in the container allows you to operate in an interactive mode 
+in the containerised operating system. For example: 
+
+```
+docker run -it flowcraft/fastqc:0.11.7-1 bash 
+``` 
+
+Once launched the container you wil noticed that's running as root (!). 
+Use the usual commands to navigate in the file system.
+
+To exit from the container, stop the BASH session with the `exit` command.
 
 ### b) Dockerfiles
 
