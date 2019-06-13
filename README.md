@@ -292,11 +292,67 @@ To exit from the container, stop the BASH session with the `exit` command.
 
 ### b) Dockerfiles
 
-How to write a Dockerfile. From nf-core. Install fastqc & multiqc
+Docker images are created by using a so called `Dockerfile` i.e. a simple text file 
+containing a list of commands to be executed to assemble and configure the image
+with the software packages required.    
+
+In this step you will create a Docker image containing the FastQC & MultiQC tools.
+
+
+Warning: the Docker build process automatically copies all files that are located in the 
+current directory to the Docker daemon in order to create the image. This can take 
+a lot of time when big/many files exist. For this reason it's important to *always* work in 
+a directory containing only the files you really need to include in your Docker image. 
+Alternatively you can use the `.dockerignore` file to select the path to exclude from the build. 
+
+Then use your favourite editor eg. `vim` to create a file named `Dockerfile` and copy the 
+following content: 
+
+```Dockerfile
+FROM nfcore/base
+
+LABEL authors="phil@lifebit.ai" \
+      description="Docker image containing fastqc & multiqc for LBF hackathon tutorial"
+
+RUN conda install -c bioconda fastqc=0.11.8 && \
+    conda install -c bioconda multiqc=1.7
+```
+
+When done save the file. 
 
 ### c) Building images
 
-Docker build command & run interactively
+Build the Docker image by using the following command: 
+
+```bash
+docker build -t my-image .
+```
+
+Note: don't miss the dot in the above command. When it completes, verify that the image 
+has been created listing all available images: 
+
+```bash
+docker images
+```
+
+You can try your new container by running this command: 
+
+```bash
+docker run my-image cowsay Hello Docker!
+```
+
+
+#### For example:
+With the `Dockerfile` from above you might want to run:
+```bash
+docker build -t lifebitai/lbf-hack .
+```
+**\<Insert waiting forever for conda solving environment meme here\>**
+
+And then:
+```bash
+docker run -it lifebitai/lbf-hack:latest bash
+```
 
 
 ### d) BONUS: Pushing to DockerHub
