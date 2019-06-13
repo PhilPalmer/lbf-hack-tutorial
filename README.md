@@ -4,10 +4,10 @@ Tutorial for The [London Bioinformatics Frontiers](http://bioinformatics-frontie
 ![lbf_banner](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/lbf_banner.png)
 
 Intro to:
-- [Nextflow](https://www.nextflow.io/) **\<Insert descriptions here\>**
-- [Docker](https://www.docker.com/)
-- [FlowCraft](https://flowcraft.readthedocs.io/en/latest/)
-- [Deploit](https://lifebit.ai/deploit)
+- [Nextflow](https://www.nextflow.io/) - framework for building paralleisable & scalable computational pipelines
+- [Docker](https://www.docker.com/) - tool to create, deploy, and run applications by using containers which bundle dependencies
+- [FlowCraft](https://flowcraft.readthedocs.io/en/latest/) - modular, extensible and flexible tool to build, monitor and report nextflow pipelines
+- [Deploit](https://lifebit.ai/deploit) - cloud based platform to run Nextflow data analyses & data management
 
 ## Prerequisites
 The following are required for the hackathon:
