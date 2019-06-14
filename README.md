@@ -503,8 +503,37 @@ Here the `merge-params` flag is used to merges all parameters with the same name
 
 ![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
 
-About [Deploit](https://lifebit.ai/deploit)
+[Deploit](https://lifebit.ai/deploit) is a bioinformatics platform, developed by Lifebit, where you can run your analysis over the Cloud/AWS.
 
 ### a) Creating an account
-### b) Running a pipeline
-### c) Importing a Nextflow pipeline on Deploit
+First create an account/log in [here](https://deploit.lifebit.ai/register). You will get $10 free credits. If you prefer you can connect & use your own AWS account/credentials.
+
+### b) Importing a Nextflow pipeline on Deploit
+
+Navigate to the pipelines page, click new to import a new pipeline. Then select Nextflow & paste the URL from GitHub eg: https://github.com/lifebit-ai/gatk-flowcraft
+
+![import_nextflow](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/import_nextflow.png)
+
+### c) Running the pipeline
+
+Pipelines can be run in three simple steps:
+1. Select the pipeline
+2. Select data & parameters
+3. Run the analysis
+
+You can then click the pipeline under the "My pipelines" section and select data/input parameters:
+
+![run_job](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/run_job.png)
+
+#### Setting resources
+
+Select a project & instance:
+
+![instance_nextflow](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/instance_nextflow.png)
+
+You can then click the pipeline under the "My pipelines" section and select data/input parameters:
+
+The `--input_folder` is a required parameter. It must contain all of the input zipped ecw files to be unzipped and the ecw files converted. The data can be set by clicking the blue database button and selecting your data either from an S3 bucket or by uploading the data. 
+
+
+![run_nextflow_job](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/run_nextflow_job.png)
