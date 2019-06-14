@@ -418,19 +418,21 @@ FlowCraft allows you to build pipelines from components. In order to create a ne
 ### i. Templates
 Inside of the `flowcraft` directory, create & open a new file `flowcraft/generator/templates/fastqc2.nf` in your favourite code editor:
 ```nextflow
-IN_adapters_{{ pid }} = Channel
-    .value(params.adapters{{ param_id }})
+process fastqc2_{{ pid }} {
 
-process fastqc2 {
+    {% include "post.txt" ignore missing %}
 
-    tag { fastq_id }
+    tag { sample_id }
+    publishDir "results/fastqc2_{{ pid }}", mode: 'copy'
 
     input:
-    set fastq_id, file(fastq_pair) from {{ input_channel }}
-    val ad from IN_adapters
+    set sample_id, file(fastq_pair) from {{ input_channel }}
 
     output:
-    set fastq_id, file(fastq_pair) into {{ output_channel }}
+    file "*_fastqc.{zip,html}" into {{ output_channel }}
+    {% with task_name="fastqc2" %}
+    {%- include "compiler_channels.txt" ignore missing -%}
+    {% endwith %}
 
     script:
     """
@@ -455,20 +457,16 @@ class Fastqc2(Process):
         self.input_type = "fastq"
         self.output_type = "fastq"
 
-        self.params = {
-            "adapters": {
-                "default": "'None'",
-                "description":
-                    "Path to adapters files, if any."
-            }
-        }
-
         self.directives = {"fastqc2": {
             "cpus": 2,
             "memory": "'4GB'",
             "container": "flowcraft/fastqc",
             "version": "0.11.7-1"
         }}
+
+        self.status_channels = [
+            "fastqc2"
+        ]
 ```
 
 Here we set 3 things:
