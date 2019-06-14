@@ -490,7 +490,7 @@ This will create a nextflow script `fastqc.nf`
 
 More complex pipelines such as a GATK pipeline can be built with one command:
 ```bash
-flowcraft.py build -t "fastqc bwa mark_duplicates haplotypecaller" -o gatk.nf --merge-params
+flowcraft.py build -t "fastqc bwa mark_duplicates haplotypecaller" -o main.nf --merge-params
 ```
 
 Here the `merge-params` flag is used to merges all parameters with the same name in a single parameter
