@@ -404,6 +404,8 @@ What is FlowCraft? Why use it?
 [See FlowCraft slides](https://slides.com/diogosilva-1/nextflow-workshop-2018-6#/)
 
 ### a) Installation
+
+FlowCraft is available to install via both Conda & Pip. However, as we are going to building components we want to install the development version. This can be done with the following commands:
 ```bash
 git clone https://github.com/assemblerflow/flowcraft.git
 cd flowcraft
