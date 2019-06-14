@@ -351,9 +351,48 @@ docker run -it lifebitai/lbf-hack:latest bash
 The container can be used in our Nextflow pipeline replacing the two different containers we currently have because it has both `fastqc` & `multiqc` installed
 
 
-### d) BONUS: Pushing to DockerHub
+### d) BONUS: Upload the container to Docker Hub
 
-What is DockerHub? How to create an account on DockerHub, log in on the CLI & push to DockerHub.
+Publish your container in Docker Hub to share it with other people. 
+
+Create an account in the https://hub.docker.com web site. Then from your shell terminal run 
+the following command, entering the user name and password you specified registering in the Hub: 
+
+```
+docker login 
+``` 
+
+Tag the image with your Docker user name account: 
+
+```
+docker tag my-image <user-name>/my-image 
+```
+
+Finally push it to the Docker Hub:
+
+```
+docker push <user-name>/my-image 
+```
+
+After that anyone will be able to download it by using the command: 
+
+```
+docker pull <user-name>/my-image 
+```
+
+Note how after a pull and push operation, Docker prints the container digest number e.g. 
+
+```
+Digest: sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
+Status: Downloaded newer image for nextflow/rnaseq-nf:latest
+```
+
+This is a unique and immutable identifier that can be used to reference container image 
+in a univocally manner. For example: 
+
+```
+docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
+```
 
 <br />
 
