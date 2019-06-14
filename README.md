@@ -335,13 +335,6 @@ has been created listing all available images:
 docker images
 ```
 
-You can try your new container by running this command: 
-
-```bash
-docker run my-image cowsay Hello Docker!
-```
-
-
 #### For example:
 With the `Dockerfile` from above you might want to run:
 ```bash
@@ -350,10 +343,12 @@ docker build -t lifebitai/lbf-hack .
 
 ![conda](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/conda.png)
 
-And then:
+And then you can enter inside the container to check everything is working:
 ```bash
 docker run -it lifebitai/lbf-hack:latest bash
 ```
+
+The container can be used in our Nextflow pipeline replacing the two different containers we currently have because it has both `fastqc` & `multiqc` installed
 
 
 ### d) BONUS: Pushing to DockerHub
