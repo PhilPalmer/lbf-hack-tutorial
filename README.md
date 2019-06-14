@@ -413,13 +413,89 @@ python3 setup.py install
 ```
 
 ### b) How to build a FlowCraft Component
+FlowCraft allows you to build pipelines from components. In order to create a new Component two files are required. These are the template & the class.
+
 ### i. Templates
+Inside of the `flowcraft` directory, create & open a new file `flowcraft/generator/templates/fastqc2.nf` in your favourite code editor:
+```nextflow
+IN_adapters_{{ pid }} = Channel
+    .value(params.adapters{{ param_id }})
+
+process fastqc2 {
+
+    tag { fastq_id }
+
+    input:
+    set fastq_id, file(fastq_pair) from {{ input_channel }}
+    val ad from IN_adapters
+
+    output:
+    set fastq_id, file(fastq_pair) into {{ output_channel }}
+
+    script:
+    """
+    fastqc $fastq_pair
+    """
+}
+
+{{ forks }}
+```
+
+This is standard Nextflow code which is used as a template. Any code in the the double curley brackets `{{}}` is flowcraft code which will be replaced when building pipelines.
+
 ### ii. Classes
 
+Inside of the `flowcraft` directory, open & add the following to the file `flowcraft/generator/components/reads_quality_control.py` in your favourite code editor:
+
+```python
+class Fastqc2(Process):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        self.input_type = "fastq"
+        self.output_type = "fastq"
+
+        self.params = {
+            "adapters": {
+                "default": "'None'",
+                "description":
+                    "Path to adapters files, if any."
+            }
+        }
+
+        self.directives = {"fastqc2": {
+            "cpus": 2,
+            "memory": "'4GB'",
+            "container": "flowcraft/fastqc",
+            "version": "0.11.7-1"
+        }}
+```
+
+Here we set 3 things:
+- the **inputs & outputs** which allows processes to be connected
+- the **parameters** required by the process
+- the **directives** for the process, including the docker container we want to use. Here the `version` is the `tag` of the docker container
+
 ### c) Building a pipeline with FlowCraft
+
+Now if we add the directory containing `flowcraft.py` to our path, we can then build a pipeline from any directory, eg:
+```bash
+export PATH=$PATH:/path/to/flowcraft/flowcraft
+```
+
+Now we can test the component we have built with the command:
+```bash
+flowcraft.py build -t "fastqc2" -o fastqc.nf
+```
+
+This will create a nextflow script `fastqc.nf`    
+
+More complex pipelines such as a GATK pipeline can be built with one command:
 ```bash
 flowcraft.py build -t "fastqc bwa mark_duplicates haplotypecaller" -o gatk.nf --merge-params
 ```
+
+Here the `merge-params` flag is used to merges all parameters with the same name in a single parameter
 
 <br />
 
