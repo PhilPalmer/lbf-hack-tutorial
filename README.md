@@ -534,7 +534,35 @@ Pipelines can be run in three simple steps:
 2. Select data & parameters
 3. Run the analysis
 
-You can then click the pipeline under the "My pipelines" section and select data/input parameters:
+#### i. Selecting the pipeline
+Once the pipeline is imported it will automatically be selected.
+
+Alternatively, you can navigate to the pipelines page. Where you can find the imported pipeline under `MY PIPELINES & TOOLS`. To select the pipeline you need to click the card for the pipeline.
+
+![my_pipelines](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/my_pipelines.png)
+
+#### ii. Selecting the data & parameters
+
+The pipeline requires four parameters to be set. These are:
+- `fastq` - pairs end reads to be analysed in `fastq.gz` format
+- `reference` - name of reference genome `fasta`, `fai` & `dict` files
+- `intervals` - `interval_list` file to speicify the regions to call variants in
+
+To select the data & parameters you must:
+- Click the green plus to add more lines to for two additional parameters
+- Specify the parameter names for `fastq`, `reference` & `intervals`
+- Import the testdata. This has already been added to the AWS S3 bucket `s3://lifebit-featured-datasets/hackathon/gatk-flowcraft` (although you can also upload files from your local machine via the web interface)
+- Once the testdata has been imported you must specify the values for each parameter:
+    - `fastq` use the blue plus button to `Choose` the imported folder & click `+Regex` & type `*{1,2}.fastq.gz`
+    - `reference` you can also use strings to specify the location. Set the reference to `s3://ngi-igenomes/igenomes/Homo_sapiens/GATK/GRCh37/Sequence/WholeGenomeFasta/human_g1k_v37_decoy`
+    - Finally for the intervals click the blue plus again & select the `GRCh37WholeGenome.interval_list` file within the imported folder
+- Finally click `Next`
+
+Set below for all of the steps:
+
+![select_data_params](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/select_data_params.gif)
+
+#### ii. Run the job
 
 ![run_job](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/run_job.png)
 
