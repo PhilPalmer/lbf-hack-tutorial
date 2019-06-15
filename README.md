@@ -490,7 +490,7 @@ This will create a nextflow script `fastqc.nf`
 
 More complex pipelines such as a GATK pipeline can be built with one command:
 ```bash
-flowcraft.py build -t "fastqc bwa mark_duplicates haplotypecaller" -o main.nf --merge-params
+flowcraft.py build -t "bwa mark_duplicates haplotypecaller" -o main.nf --merge-params
 ```
 
 Here the `merge-params` flag is used to merges all parameters with the same name in a single parameter
@@ -574,3 +574,13 @@ Before running the job you must:
 ![run_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/run_job.gif)
 
 ### d) Monitoring an analysis
+
+To monitor jobs you can click on the row for any given job. Immediately after running a job its status will be initialising. This is where AWS in launching the instance. This normally occurs for ~5mins before you are able to view the progress of the job. 
+
+Once on the job monitor page you can see the progress of the job update in real time. Information such as the resources i.e. memory & CPUs is displayed. Once the job has finished the results can be found in the results tab as well as any reports for select pipelines.
+
+![monitor_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/monitor_job.gif)
+
+You can view a successfully completed job [here](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba):
+
+[![shared_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/shared_job.png)](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba)
