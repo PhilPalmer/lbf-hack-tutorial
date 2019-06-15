@@ -573,9 +573,4 @@ Before running the job you must:
 
 ![run_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/run_job.gif)
 
-You can then click the pipeline under the "My pipelines" section and select data/input parameters:
-
-The `--input_folder` is a required parameter. It must contain all of the input zipped ecw files to be unzipped and the ecw files converted. The data can be set by clicking the blue database button and selecting your data either from an S3 bucket or by uploading the data. 
-
-
-![run_nextflow_job](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/run_nextflow_job.png)
+### d) Monitoring an analysis
