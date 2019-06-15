@@ -543,7 +543,7 @@ Alternatively, you can navigate to the pipelines page. Where you can find the im
 
 #### ii. Selecting the data & parameters
 
-The pipeline requires four parameters to be set. These are:
+The pipeline requires three parameters to be set. These are:
 - `fastq` - pairs end reads to be analysed in `fastq.gz` format
 - `reference` - name of reference genome `fasta`, `fai` & `dict` files
 - `intervals` - `interval_list` file to speicify the regions to call variants in
@@ -562,7 +562,7 @@ Set below for all of the steps:
 
 ![select_data_params](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/select_data_params.gif)
 
-#### ii. Run the job
+#### iii. Run the job
 
 ![run_job](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/run_job.png)
 
