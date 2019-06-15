@@ -3,11 +3,11 @@ Tutorial for The [London Bioinformatics Frontiers](http://bioinformatics-frontie
 
 ![lbf_banner](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/lbf_banner.png)
 
-Intro to:
-- [Nextflow](https://www.nextflow.io/) - framework for building paralleisable & scalable computational pipelines
-- [Docker](https://www.docker.com/) - tool to create, deploy, and run applications by using containers which bundle dependencies
-- [FlowCraft](https://flowcraft.readthedocs.io/en/latest/) - modular, extensible and flexible tool to build, monitor and report nextflow pipelines
-- [Deploit](https://lifebit.ai/deploit) - cloud based platform to run Nextflow data analyses & data management
+In this tutorial you will learn:
+- [Nextflow](https://www.nextflow.io/) - how to build paralleisable & scalable computational pipelines
+- [Docker](https://www.docker.com/) - how to build & run containers to bundle dependencies
+- [FlowCraft](https://flowcraft.readthedocs.io/en/latest/) - how to build & use modular, extensible and flexible components for nextflow pipelines
+- [Deploit](https://lifebit.ai/deploit) - how to scale your analyses over the cloud
 
 ## Prerequisites
 The following are required for the hackathon:
@@ -258,8 +258,7 @@ Here we learnt how to use configuration files to set parameters, resources & con
 
 ![docker logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/docker.gif)
 
-What is Docker? Why use it? **\<Insert reproducibility meme here\>**
-[See about Docker slides]()
+What is Docker? Why use it? [See about Docker slides]()
 
 
 ### a) Running images
@@ -545,7 +544,7 @@ Alternatively, you can navigate to the pipelines page. Where you can find the im
 #### ii. Selecting the data & parameters
 
 The pipeline requires three parameters to be set. These are:
-- `fastq` - pairs end reads to be analysed in `fastq.gz` format
+- `fastq` - paired end reads to be analysed in `fastq.gz` format
 - `reference` - name of reference genome `fasta`, `fai` & `dict` files
 - `intervals` - `interval_list` file to speicify the regions to call variants in
 
