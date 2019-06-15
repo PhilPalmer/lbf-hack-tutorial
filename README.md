@@ -416,7 +416,7 @@ python3 setup.py install
 FlowCraft allows you to build pipelines from components. In order to create a new Component two files are required. These are the template & the class.
 
 ### i. Templates
-Inside of the `flowcraft` directory, create & open a new file `flowcraft/generator/templates/fastqc2.nf` in your favourite code editor:
+Inside of the `flowcraft` directory, create & open a new [file](https://github.com/assemblerflow/flowcraft/commit/7a4575bc0fab7c54d7f427805dff5b47ef0a666b) `flowcraft/generator/templates/fastqc2.nf` in your favourite code editor:
 ```nextflow
 process fastqc2_{{ pid }} {
 
@@ -447,7 +447,7 @@ This is standard Nextflow code which is used as a template. Any code in the the 
 
 ### ii. Classes
 
-Inside of the `flowcraft` directory, open & add the following to the file `flowcraft/generator/components/reads_quality_control.py` in your favourite code editor:
+Inside of the `flowcraft` directory, open & add the following [changes](https://github.com/assemblerflow/flowcraft/commit/43d9ffdb7b1ca5c9e65a4444356cdc7c6bdae404) to the file `flowcraft/generator/components/reads_quality_control.py` in your favourite code editor:
 
 ```python
 class Fastqc2(Process):
