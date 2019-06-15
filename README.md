@@ -506,11 +506,26 @@ Here the `merge-params` flag is used to merges all parameters with the same name
 ### a) Creating an account
 First create an account/log in [here](https://deploit.lifebit.ai/register). You will get $10 free credits. If you prefer you can connect & use your own AWS account/credentials.
 
+![create_deploit_account](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/create_deploit_account.png)
+
 ### b) Importing a Nextflow pipeline on Deploit
 
-Navigate to the pipelines page, click new to import a new pipeline. Then select Nextflow & paste the URL from GitHub eg: https://github.com/lifebit-ai/gatk-flowcraft
+We are able to import the GATK pipeline we created with FlowCraft from the previous section (Session 3) on Deploit. This will enable us to scale our analyses. All we need to import a pipeline is the URL from GitHub. For simplicity we have already created a GitHub repository for the pipeline here: https://github.com/lifebit-ai/gatk-flowcraft
 
-![import_nextflow](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/import_nextflow.png)
+To import the pipeline we must first navigate to the pipelines page. This can be found in the navigation bar on the left hand-side:
+
+![deploit_pipelines](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit_pipelines.png)
+
+To then import the pipeline you need to:
+- Click the green `New` button
+- `Select` the GitHub icon to import the Nextflow pipeline from GitHub
+- Paste the URL of our pipeline [`https://github.com/lifebit-ai/gatk-flowcraft`](https://github.com/lifebit-ai/gatk-flowcraft)
+- Name our pipeline, eg `gatk-flowcraft`
+- (Optional:) enter a pipeline description
+- Click `Next` & `Create pipeline` :tada:
+
+![import_pipeline.gif](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/import_pipeline.gif)
+
 
 ### c) Running the pipeline
 
