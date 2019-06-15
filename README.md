@@ -469,10 +469,11 @@ class Fastqc2(Process):
         ]
 ```
 
-Here we set 3 things:
+Here we set the following:
 - the **inputs & outputs** which allows processes to be connected
-- the **parameters** required by the process
+- the **parameters** required by the process (none in this case)
 - the **directives** for the process, including the docker container we want to use. Here the `version` is the `tag` of the docker container
+- the **status channels** for the process to log its status
 
 ### c) Building a pipeline with FlowCraft
 
