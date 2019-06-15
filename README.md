@@ -260,6 +260,7 @@ Here we learnt how to use configuration files to set parameters, resources & con
 
 What is Docker? Why use it? [See about Docker slides]()
 
+During this session you will learn how to build & run your own Docker container to bundle dependencies for FastQC & MultiQC
 
 ### a) Running images
 
@@ -402,6 +403,8 @@ docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544
 What is FlowCraft? Why use it? 
 [See FlowCraft slides](https://slides.com/diogosilva-1/nextflow-workshop-2018-6#/)
 
+During this session you will learn how to build your own Fastqc FlowCraft component & GATK pipeline
+
 ### a) Installation
 
 FlowCraft is available to install via both Conda & Pip. However, as we are going to building components we want to install the development version. This can be done with the following commands:
@@ -500,6 +503,8 @@ Here the `merge-params` flag is used to merges all parameters with the same name
 ## Session 4: Running Nextflow Pipelines on The Cloud on Deploit
 
 ![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
+
+During this session you will learn how to scale the GATK pipeline you built in the previous session to run on the Cloud using the Deploit platform.
 
 [Deploit](https://lifebit.ai/deploit) is a bioinformatics platform, developed by Lifebit, where you can run your analysis over the Cloud/AWS.
 
