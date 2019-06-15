@@ -539,7 +539,7 @@ Once the pipeline is imported it will automatically be selected.
 
 Alternatively, you can navigate to the pipelines page. Where you can find the imported pipeline under `MY PIPELINES & TOOLS`. To select the pipeline you need to click the card for the pipeline.
 
-![my_pipelines](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/my_pipelines.png)
+![my_pipelines](https://raw.githubusercontent.com/lifebit-ai/lbf-hack-tutorial/master/images/my_pipelines.png)
 
 #### ii. Selecting the data & parameters
 
@@ -560,7 +560,7 @@ To select the data & parameters you must:
 
 Set below for all of the steps:
 
-![select_data_params](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/select_data_params.gif)
+![select_data_params](https://raw.githubusercontent.com/lifebit-ai/lbf-hack-tutorial/master/images/select_data_params.gif)
 
 #### iii. Run the job
 
