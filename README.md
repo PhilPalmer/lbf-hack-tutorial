@@ -562,15 +562,16 @@ Set below for all of the steps:
 
 ![select_data_params](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/select_data_params.gif)
 
-#### iii. Run the job
-
-![run_job](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/run_job.png)
-
-#### Setting resources
+#### iii. Run the job - selecting the project & resources
 
 Select a project & instance:
 
-![instance_nextflow](https://raw.githubusercontent.com/lifebit-ai/ecw-converter/master/images/instance_nextflow.png)
+Before running the job you must:
+1. Select the project (which is like a folder used to group multiple analyses/jobs). You can select the already created `Demo` project
+2. Choose the instance to set the compute resources such as CPUs & memory. Here you can select `Dedicated Instances` > 16 CPUs > `c4.4xlarge`
+3. Finally click `Run job`
+
+![run_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/run_job.gif)
 
 You can then click the pipeline under the "My pipelines" section and select data/input parameters:
 
