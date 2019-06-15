@@ -559,7 +559,7 @@ To select the data & parameters you must:
     - Finally for the intervals click the blue plus again & select the `GRCh37WholeGenome.interval_list` file within the imported folder
 - Finally click `Next`
 
-Set below for all of the steps:
+See below for all of the steps:
 
 ![select_data_params](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/select_data_params.gif)
 
@@ -585,3 +585,13 @@ Once on the job monitor page you can see the progress of the job update in real 
 You can view a successfully completed job [here](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba):
 
 [![shared_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/shared_job.png)](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba)
+
+
+## Credits
+
+Credit to [Lifebit](https://lifebit.ai/) & [The Francis Crick Institute](https://www.crick.ac.uk/) for organising & hotsting the event
+
+Many thanks to everyone who helped out along the way, including (but not limited to): 
+@ODiogoSilva, @cgpu, @clairealix, @cimendes & @pprieto
+
+Thanks to everyone involved in the [nf-hack17-tutorial](https://github.com/nextflow-io/nf-hack17-tutorial) which was heavily used as inspiration for this tutorial
