@@ -26,7 +26,7 @@ The following are required for the hackathon:
 
 What is Nextflow? Why use it? [See about Nextflow slides]()
 
-During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) & [MultiQC](https://multiqc.info/)   pipeline to learn the basics of Nextflow including:
+**Main outcome: During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) & [MultiQC](https://multiqc.info/) pipeline to learn the basics of Nextflow including:**
 - [Parameters](https://www.nextflow.io/docs/latest/getstarted.html?highlight=parameters#pipeline-parameters)
 - [Processes](https://www.nextflow.io/docs/latest/process.html) (inputs, outputs & scripts)
 - [Channels](https://www.nextflow.io/docs/latest/channel.html)
@@ -260,7 +260,7 @@ Here we learnt how to use configuration files to set parameters, resources & con
 
 What is Docker? Why use it? [See about Docker slides]()
 
-During this session you will learn how to build & run your own Docker container to bundle dependencies for FastQC & MultiQC
+**Main outcome: During this session you will learn how to build & run your own Docker container to bundle dependencies for FastQC & MultiQC**
 
 ### a) Running images
 
@@ -403,7 +403,7 @@ docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544
 What is FlowCraft? Why use it? 
 [See FlowCraft slides](https://slides.com/diogosilva-1/nextflow-workshop-2018-6#/)
 
-During this session you will learn how to build your own Fastqc FlowCraft component & GATK pipeline
+**Main outcome: During this session you will learn how to build your own Fastqc FlowCraft component & GATK pipeline**
 
 ### a) Installation
 
@@ -504,7 +504,7 @@ Here the `merge-params` flag is used to merges all parameters with the same name
 
 ![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
 
-During this session you will learn how to scale the GATK pipeline you built in the previous session to run on the Cloud using the Deploit platform.
+**Main outcome: During this session you will learn how to scale the GATK pipeline you built in the previous session to run on the Cloud using the Deploit platform.**
 
 [Deploit](https://lifebit.ai/deploit) is a bioinformatics platform, developed by Lifebit, where you can run your analysis over the Cloud/AWS.
 
