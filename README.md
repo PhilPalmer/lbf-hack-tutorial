@@ -4,9 +4,9 @@ Tutorial for The [London Bioinformatics Frontiers](http://bioinformatics-frontie
 ![lbf_banner](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/lbf_banner.png)
 
 In this tutorial you will learn:
-- [Nextflow](https://www.nextflow.io/) - how to build paralleisable & scalable computational pipelines
+- [Nextflow](https://www.nextflow.io/) - how to build parallelisable & scalable computational pipelines
 - [Docker](https://www.docker.com/) - how to build & run containers to bundle dependencies
-- [FlowCraft](https://flowcraft.readthedocs.io/en/latest/) - how to build & use modular, extensible and flexible components for nextflow pipelines
+- [FlowCraft](https://flowcraft.readthedocs.io/en/latest/) - how to build & use modular, extensible and flexible components for Nextflow pipelines
 - [Deploit](https://lifebit.ai/deploit) - how to scale your analyses over the cloud
 
 ## Prerequisites
@@ -26,7 +26,7 @@ The following are required for the hackathon:
 
 What is Nextflow? Why use it? [See about Nextflow slides]()
 
-**Main outcome: During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) & [MultiQC](https://multiqc.info/) pipeline to learn the basics of Nextflow including:**
+**Main outcome:** *During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) & [MultiQC](https://multiqc.info/) pipeline to learn the basics of Nextflow including:*
 - [Parameters](https://www.nextflow.io/docs/latest/getstarted.html?highlight=parameters#pipeline-parameters)
 - [Processes](https://www.nextflow.io/docs/latest/process.html) (inputs, outputs & scripts)
 - [Channels](https://www.nextflow.io/docs/latest/channel.html)
@@ -58,7 +58,7 @@ nextflow run hello
 
 ### ii. Installing Docker
 
-To check if you have docker installed you can type:
+To check if you have Docker installed you can type:
 ```bash
 docker -v
 ```
@@ -150,7 +150,7 @@ There are two types of channels:
 2. [Value channels](https://www.nextflow.io/docs/latest/channel.html#value-channel) a.k.a. singleton channel are bound to a single value and can be read unlimited times without consuming there content. Value channels are produced by the value factory method or by operators returning a single value, such us first, last, collect, count, min, max, reduce, sum.
 -->
 
-Here we will use the method [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) to create a channel to load paired end FASTQ data, rather than just a single FASTQ file.
+Here we will use the method [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) to create a channel to load paired-end FASTQ data, rather than just a single FASTQ file.
 
 To do this we will replace the code from [1c](https://github.com/PhilPalmer/lbf-hack-tutorial/blob/master/README.md#c-processes-inputs-outputs--scripts) with the following 
 
@@ -177,7 +177,7 @@ process fastqc {
 }
 ```
 
-The `reads` variable is now equal to a channel which contains the reads prefix & paired end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. This `name` can be used as a tag for when the pipeline is run. Also as we are now declaring two inputs the `set` keyword also has to be used. Finally we can also specify the container name within the processes as a directive.
+The `reads` variable is now equal to a channel which contains the reads prefix & paired-end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. This `name` can be used as a tag for when the pipeline is run. Also as we are now declaring two inputs the `set` keyword also has to be used. Finally, we can also specify the container name within the processes as a directive.
 
 To run the pipeline:
 ```bash
@@ -217,7 +217,7 @@ process multiqc {
 
 Here we have added another process `multiqc`. We have used the `collect` operator here so that if `fastqc` ran for more than two pairs of files `multiqc` would collect all of the files & run only once.
 
-The pipeline can be run with the follwing:
+The pipeline can be run with the following:
 ```bash
 nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker flowcraft/fastqc:0.11.7-1
 ```
@@ -227,7 +227,7 @@ Here we learnt how to use operators such as `collect` & connect processes via ch
 
 ### f) Configuration
 
-Configuration such as parameters, containers & resources eg memory can be set in `config` files such as [`nextflow.config`](https://www.nextflow.io/docs/latest/config.html#configuration-file).
+Configuration, such as parameters, containers & resources eg memory can be set in `config` files such as [`nextflow.config`](https://www.nextflow.io/docs/latest/config.html#configuration-file).
 
 For example our `nextflow.config` file might look like this:
 ```
@@ -260,11 +260,11 @@ Here we learnt how to use configuration files to set parameters, resources & con
 
 What is Docker? Why use it? [See about Docker slides]()
 
-**Main outcome: During this session you will learn how to build & run your own Docker container to bundle dependencies for FastQC & MultiQC**
+**Main outcome:** *During this session, you will learn how to build & run your own Docker container to bundle dependencies for FastQC & MultiQC*
 
 ### a) Running images
 
-Running a container is easy as using the following command: 
+Running a container is as easy as using the following command: 
 
 ```bash
 docker run <container-name> 
@@ -285,7 +285,7 @@ in the containerised operating system. For example:
 docker run -it flowcraft/fastqc:0.11.7-1 bash 
 ``` 
 
-Once launched the container you wil noticed that's running as root (!). 
+Once the container is launched you will notice that's running as root (!). 
 Use the usual commands to navigate in the file system.
 
 To exit from the container, stop the BASH session with the `exit` command.
@@ -296,14 +296,14 @@ Docker images are created by using a so called `Dockerfile` i.e. a simple text f
 containing a list of commands to be executed to assemble and configure the image
 with the software packages required.    
 
-In this step you will create a Docker image containing the FastQC & MultiQC tools.
+In this step, you will create a Docker image containing the FastQC & MultiQC tools.
 
 
 Warning: the Docker build process automatically copies all files that are located in the 
 current directory to the Docker daemon in order to create the image. This can take 
-a lot of time when big/many files exist. For this reason it's important to *always* work in 
+a lot of time when big/many files exist. For this reason, it's important to *always* work in 
 a directory containing only the files you really need to include in your Docker image. 
-Alternatively you can use the `.dockerignore` file to select the path to exclude from the build. 
+Alternatively, you can use the `.dockerignore` file to select the path to exclude from the build. 
 
 Then use your favourite editor eg. `vim` to create a file named `Dockerfile` and copy the 
 following content: 
@@ -368,7 +368,7 @@ Tag the image with your Docker user name account:
 docker tag my-image <user-name>/my-image 
 ```
 
-Finally push it to the Docker Hub:
+Finally, push it to the Docker Hub:
 
 ```
 docker push <user-name>/my-image 
@@ -403,7 +403,7 @@ docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544
 What is FlowCraft? Why use it? 
 [See FlowCraft slides](https://slides.com/diogosilva-1/nextflow-workshop-2018-6#/)
 
-**Main outcome: During this session you will learn how to build your own Fastqc FlowCraft component & GATK pipeline**
+**Main outcome:** *During this session, you will learn how to build your own Fastqc FlowCraft component & GATK pipeline*
 
 ### a) Installation
 
@@ -415,7 +415,7 @@ python3 setup.py install
 ```
 
 ### b) How to build a FlowCraft Component
-FlowCraft allows you to build pipelines from components. In order to create a new Component two files are required. These are the template & the class.
+FlowCraft allows you to build pipelines from components. In order to create a new Component, two files are required. These are the template & the class.
 
 ### i. Templates
 Inside of the `flowcraft` directory, create & open a new [file](https://github.com/assemblerflow/flowcraft/commit/7a4575bc0fab7c54d7f427805dff5b47ef0a666b) `flowcraft/generator/templates/fastqc2.nf` in your favourite code editor:
@@ -445,7 +445,7 @@ process fastqc2_{{ pid }} {
 {{ forks }}
 ```
 
-This is standard Nextflow code which is used as a template. Any code in the the double curley brackets `{{}}` is flowcraft code which will be replaced when building pipelines.
+This is standard Nextflow code which is used as a template. Any code in the double curley brackets `{{}}` is FlowCraft code which will be replaced when building pipelines.
 
 ### ii. Classes
 
@@ -489,7 +489,7 @@ Now we can test the component we have built with the command:
 flowcraft.py build -t "fastqc2" -o fastqc.nf
 ```
 
-This will create a nextflow script `fastqc.nf`    
+This will create a Nextflow script `fastqc.nf`    
 
 More complex pipelines such as a GATK pipeline can be built with one command:
 ```bash
@@ -504,20 +504,20 @@ Here the `merge-params` flag is used to merges all parameters with the same name
 
 ![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
 
-**Main outcome: During this session you will learn how to scale the GATK pipeline you built in the previous session to run on the Cloud using the Deploit platform.**
+**Main outcome:** *During this session, you will learn how to scale the GATK pipeline you built in the previous session to run on the Cloud using the Deploit platform.*
 
 [Deploit](https://lifebit.ai/deploit) is a bioinformatics platform, developed by Lifebit, where you can run your analysis over the Cloud/AWS.
 
 ### a) Creating an account
-First create an account/log in [here](https://deploit.lifebit.ai/register). You will get $10 free credits. If you prefer you can connect & use your own AWS account/credentials.
+First, create an account/log in [here](https://deploit.lifebit.ai/register). You will get $10 free credits. If you prefer you can connect & use your own AWS account/credentials.
 
 ![create_deploit_account](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/create_deploit_account.png)
 
 ### b) Importing a Nextflow pipeline on Deploit
 
-We are able to import the GATK pipeline we created with FlowCraft from the previous section (Session 3) on Deploit. This will enable us to scale our analyses. All we need to import a pipeline is the URL from GitHub. For simplicity we have already created a GitHub repository for the pipeline here: https://github.com/lifebit-ai/gatk-flowcraft
+We are able to import the GATK pipeline we created with FlowCraft from the previous section (Session 3) on Deploit. This will enable us to scale our analyses. All we need to import a pipeline is the URL from GitHub. For simplicity, we have already created a GitHub repository for the pipeline here: https://github.com/lifebit-ai/gatk-flowcraft
 
-To import the pipeline we must first navigate to the pipelines page. This can be found in the navigation bar on the left hand-side:
+To import the pipeline we must first navigate to the pipelines page. This can be found in the navigation bar on the left-hand-side:
 
 ![deploit_pipelines](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit_pipelines.png)
 
@@ -549,9 +549,9 @@ Alternatively, you can navigate to the pipelines page. Where you can find the im
 #### ii. Selecting the data & parameters
 
 The pipeline requires three parameters to be set. These are:
-- `fastq` - paired end reads to be analysed in `fastq.gz` format
+- `fastq` - paired-end reads to be analysed in `fastq.gz` format
 - `reference` - name of reference genome `fasta`, `fai` & `dict` files
-- `intervals` - `interval_list` file to speicify the regions to call variants in
+- `intervals` - `interval_list` file to specify the regions to call variants in
 
 To select the data & parameters you must:
 - Click the green plus to add more lines to for two additional parameters
@@ -560,8 +560,8 @@ To select the data & parameters you must:
 - Once the testdata has been imported you must specify the values for each parameter:
     - `fastq` use the blue plus button to `Choose` the imported folder & click `+Regex` & type `*{1,2}.fastq.gz`
     - `reference` you can also use strings to specify the location. Set the reference to `s3://ngi-igenomes/igenomes/Homo_sapiens/GATK/GRCh37/Sequence/WholeGenomeFasta/human_g1k_v37_decoy`
-    - Finally for the intervals click the blue plus again & select the `GRCh37WholeGenome.interval_list` file within the imported folder
-- Finally click `Next`
+    - For the intervals click the blue plus again & select the `GRCh37WholeGenome.interval_list` file within the imported folder
+- Finally, click `Next`
 
 See below for all of the steps:
 
@@ -574,7 +574,7 @@ Select a project & instance:
 Before running the job you must:
 1. Select the project (which is like a folder used to group multiple analyses/jobs). You can select the already created `Demo` project
 2. Choose the instance to set the compute resources such as CPUs & memory. Here you can select `Dedicated Instances` > 16 CPUs > `c4.4xlarge`
-3. Finally click `Run job`
+3. Finally, click `Run job`
 
 ![run_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/run_job.gif)
 
@@ -582,18 +582,18 @@ Before running the job you must:
 
 To monitor jobs you can click on the row for any given job. Immediately after running a job its status will be initialising. This is where AWS in launching the instance. This normally occurs for ~5mins before you are able to view the progress of the job. 
 
-Once on the job monitor page you can see the progress of the job update in real time. Information such as the resources i.e. memory & CPUs is displayed. Once the job has finished the results can be found in the results tab as well as any reports for select pipelines.
+Once on the job monitor page, you can see the progress of the job update in real time. Information such as the resources i.e. memory & CPUs is displayed. Once the job has finished the results can be found in the results tab as well as any reports for select pipelines.
 
 ![monitor_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/monitor_job.gif)
 
-You can view a successfully completed job [here](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba):
+You can view a successfully completed example job [here](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba):
 
 [![shared_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/shared_job.png)](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba)
 
 
 ## Credits
 
-Credit to [Lifebit](https://lifebit.ai/) & [The Francis Crick Institute](https://www.crick.ac.uk/) for organising & hotsting the event
+Credit to [Lifebit](https://lifebit.ai/) & [The Francis Crick Institute](https://www.crick.ac.uk/) for organising & hosting the event
 
 Many thanks to everyone who helped out along the way, including (but not limited to): 
 @ODiogoSilva, @cgpu, @clairealix, @cimendes & @pprieto
