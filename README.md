@@ -594,7 +594,7 @@ You can view a successfully completed example job [here](https://staging.lifebit
 
 Well done you survived! You’ve made it to the end of the hackathon tutorial. You’ve learned about the magic of Nextflow, Docker, Flowcraft & Deploit. You can now go out & analyse all the things.
 
-![all_the_things](https://raw.githubusercontent.com/lifebit-ai/lbf-hack-tutorial/master/images/all_the_things.jpg)
+![all_the_things](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/all_the_things.jpg)
 
 Hope you enjoyed the conference & let us know if you have any feedback or questions.
 
