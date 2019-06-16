@@ -504,7 +504,7 @@ Here the `merge-params` flag is used to merges all parameters with the same name
 
 ![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
 
-**Main outcome:** *During this session, you will learn how to scale the GATK pipeline you built in the previous session to run on the Cloud using the Deploit platform.*
+**Main outcome:** *During this session, you will learn how to scale the GATK pipeline you built in the previous session to run an analysis on the Cloud using the Deploit platform.*
 
 [Deploit](https://lifebit.ai/deploit) is a bioinformatics platform, developed by Lifebit, where you can run your analysis over the Cloud/AWS.
 
@@ -589,6 +589,14 @@ Once on the job monitor page, you can see the progress of the job update in real
 You can view a successfully completed example job [here](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba):
 
 [![shared_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/shared_job.png)](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba)
+
+### Thanks for taking part
+
+Well done you survived! You’ve made it to the end of the hackathon tutorial. You’ve learned about the magic of Nextflow, Docker, Flowcraft & Deploit. You can now go out & analyse all the things.
+
+![all_the_things](https://raw.githubusercontent.com/lifebit-ai/lbf-hack-tutorial/master/images/all_the_things.jpg)
+
+Hope you enjoyed the conference & let us know if you have any feedback or questions.
 
 
 ## Credits
